@@ -3,6 +3,7 @@ import SplashScreen from "./SplashScreen";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "../components/Loading";
 import Homepage from "./Homepage";
+import StoryDetatils from "./storyDetails";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SplashScreen />} />
             <Route path="/home" element={<Homepage />} />
+            <Route path="/storyDetails" element={<StoryDetatils />} />
           </Routes>
         </Router>
       </Suspense>
