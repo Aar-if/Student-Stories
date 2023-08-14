@@ -11,12 +11,13 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [language, setLanguage] = useState("all");
   const [ageGroup, setAgeGroup] = useState("all");
+  const [actor, setActor] = useState("all");
   const navigate = useNavigate();
 
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://onest-strapi.tekdinext.com/api/fln-contents",
+      url: "https://onest-strapi.tekdinext.com/api/stories",
       responseType: "stream",
     })
       .then(function (response) {
@@ -29,17 +30,18 @@ function App() {
         console.log(error);
       });
   }, []);
-
   // Filter the story array based on selectedCategory
   const filteredStory = story.filter((item) => {
     const categoryFilter =
       selectedCategory === "all" ||
-      item?.attributes?.title === selectedCategory;
+      item?.attributes?.Theme === selectedCategory;
     const languageFilter =
-      language === "all" || item?.attributes?.language === language;
-    const ageGroupFilter = ageGroup === "all" || item.ageGroup === ageGroup;
+      language === "all" || item?.attributes?.Language === language;
+    const ageGroupFilter =
+      ageGroup === "all" || item?.attributes?.Age === ageGroup;
+    const actorFilter = actor === "all" || item?.attributes?.Actor === actor;
 
-    return categoryFilter && languageFilter && ageGroupFilter;
+    return categoryFilter && languageFilter && ageGroupFilter && actorFilter;
   });
 
   return (
@@ -48,11 +50,7 @@ function App() {
         <Header />
       </div>
       <div className="App">
-        <div
-          className="product-container"
-          style={{ marginTop: "70px", marginBottom: "70px" }}
-        >
-          <h1>Stories List</h1>
+        <div className="product-container" style={{ marginTop: "70px" }}>
           <div
             style={{
               display: "flex",
@@ -66,8 +64,26 @@ function App() {
               onChange={(e) => setAgeGroup(e.target.value)}
             >
               <option value="all">Age</option>
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
+              <option value={1}>1 </option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
+              <option value={7}>7</option>
+              <option value={8}>8</option>
+              <option value={9}>9</option>
+              <option value={10}>10</option>
+              <option value={11}>11</option>
+              <option value={12}>12</option>
+              <option value={13}>13</option>
+              <option value={14}>14</option>
+              <option value={15}>15</option>
+              <option value={16}>16</option>
+              <option value={17}>17</option>
+              <option value={18}>18</option>
+              <option value={19}>19</option>
+              <option value={20}>20</option>
             </select>
             <select
               value={language}
@@ -75,17 +91,29 @@ function App() {
             >
               <option value="all">Language</option>
               <option value="English">English</option>
-              <option value="Tamil">Tamil</option>
               <option value="Hindi">Hindi</option>
+              <option value="Gujarati">Gujarati</option>
               <option value="Assamese">Assamese</option>
+              <option value="Tamil">Tamil</option>
+              <option value="Marathi">Marathi</option>
+              <option value="Kannada">Kannada</option>
             </select>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="all">All</option>
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
+              <option value="all">Theme</option>
+              <option value="Video">Video</option>
+              <option value="PDF">PDF</option>
+              <option value="Audio">Audio</option>
+              <option value="Read">Read</option>
+              <option value="Other">Other</option>
+            </select>
+            <select value={actor} onChange={(e) => setActor(e.target.value)}>
+              <option value="all">Actor</option>
+              <option value="Student">Student</option>
+              <option value="Parent">Parent</option>
+              <option value="Teacher">Teacher</option>
             </select>
           </div>
           {filteredStory.map((product, index) => (
@@ -100,7 +128,7 @@ function App() {
                   });
                 }}
               >
-                View Product
+                View Story
               </button>
             </div>
           ))}
