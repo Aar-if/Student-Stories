@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.product-container {
+  display: flex;
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+  gap: 20px;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
+

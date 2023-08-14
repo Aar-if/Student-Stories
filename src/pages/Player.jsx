@@ -1,4 +1,3 @@
-import { H2 } from "../components/Common/H2/H2";
 import React from "react";
 
 const SunbirdVideoPlayer = (props) => {
@@ -21,6 +20,8 @@ const SunbirdVideoPlayer = (props) => {
       setUrl(
         `${process.env.PUBLIC_URL}/players/project-sunbird/content-player`
       );
+    } else {
+      setUrl(props?.url.replace("watch?v=", "embed/"));
     }
   }, [props?.mediaType]);
 
@@ -28,14 +29,14 @@ const SunbirdVideoPlayer = (props) => {
     return (
       <iframe
         id="preview"
-        height={"100%"}
-        width="100%"
+        width="400vw"
+        height="450vh"
         name={JSON.stringify(props)}
         src={`${url}`}
       />
     );
   } else {
-    return <H2>{`${props?.mimeType} this mime type not compatible`}</H2>;
+    return <h2>{`${props?.mimeType} this mime type not compatible`}</h2>;
   }
 };
 
