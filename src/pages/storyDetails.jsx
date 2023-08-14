@@ -14,10 +14,10 @@ function StoryDetatils() {
       </div>
       <div className="product-card" style={{ marginTop: "100px" }}>
         <h1>Detailes of story</h1>
-        <h3>{state?.product?.attributes?.title}</h3>
-        <p>Language: {state?.product?.attributes?.language}</p>
-        <p>Discription: {state?.product?.attributes?.description}</p>
-        <p>ContentType: {state?.product?.attributes?.contentType}</p>
+        <h3>Actor:{state?.product?.attributes?.Actor}</h3>
+        <p>Language: {state?.product?.attributes?.Language}</p>
+        <p>Age: {state?.product?.attributes?.Age}</p>
+        <p>Theme: {state?.product?.attributes?.Theme}</p>
         <button
           style={{ position: "absolute", justifyContent: "center" }}
           onClick={() => setShowIframe(!showIframe)}
