@@ -29,10 +29,10 @@ const SunbirdVideoPlayer = (props) => {
     return (
       <iframe
         id="preview"
-        width="400vw"
-        height="450vh"
+        width="100%"
+        height="500vh"
         name={JSON.stringify(props)}
-        src={`${url}`}
+        src={`${url}?autoplay=1?#toolbar=0`}
       />
     );
   } else {

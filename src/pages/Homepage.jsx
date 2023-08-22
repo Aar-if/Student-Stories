@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Button } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const [story, setStory] = useState([]);
@@ -13,6 +15,7 @@ function App() {
   const [ageGroup, setAgeGroup] = useState("all");
   const [actor, setActor] = useState("all");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     axios({
@@ -24,12 +27,15 @@ function App() {
         const obj = JSON.parse(response.data);
 
         const parsedData = obj.data;
+
+        console.log(parsedData);
         setStory(parsedData);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
   // Filter the story array based on selectedCategory
   const filteredStory = story.filter((item) => {
     const categoryFilter =
@@ -58,80 +64,90 @@ function App() {
               justifyContent: "space-around",
             }}
           >
-            {/* Filter dropdown */}
+            {/* Filter dropdowns */}
             <select
+              className="filters"
               value={ageGroup}
               onChange={(e) => setAgeGroup(e.target.value)}
             >
-              <option value="all">Age</option>
-              <option value={1}>1 </option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-              <option value={6}>6</option>
-              <option value={7}>7</option>
-              <option value={8}>8</option>
-              <option value={9}>9</option>
-              <option value={10}>10</option>
-              <option value={11}>11</option>
-              <option value={12}>12</option>
-              <option value={13}>13</option>
-              <option value={14}>14</option>
-              <option value={15}>15</option>
-              <option value={16}>16</option>
-              <option value={17}>17</option>
-              <option value={18}>18</option>
-              <option value={19}>19</option>
-              <option value={20}>20</option>
+              <option value="all">{t("age")}</option>
+              <option value={1}>{t("1")} </option>
+              <option value={2}>{t("2")}</option>
+              <option value={3}>{t("3")}</option>
+              <option value={4}>{t("4")}</option>
+              <option value={5}>{t("5")}</option>
+              <option value={6}>{t("6")}</option>
+              <option value={7}>{t("7")}</option>
+              <option value={8}>{t("8")}</option>
+              <option value={9}>{t("9")}</option>
+              <option value={10}>{t("10")}</option>
+              <option value={11}>{t("11")}</option>
+              <option value={12}>{t("12")}</option>
+              <option value={13}>{t("13")}</option>
+              <option value={14}>{t("14")}</option>
+              <option value={15}>{t("15")}</option>
+              <option value={16}>{t("16")}</option>
             </select>
             <select
+              className="filters"
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
             >
-              <option value="all">Language</option>
+              <option value="all">{t("language")}</option>
               <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
-              <option value="Gujarati">Gujarati</option>
+              <option value="Hindi">हिंदी</option>
+              {/* <option value="Gujarati">Gujarati</option>
               <option value="Assamese">Assamese</option>
               <option value="Tamil">Tamil</option>
               <option value="Marathi">Marathi</option>
-              <option value="Kannada">Kannada</option>
+              <option value="Kannada">Kannada</option> */}
             </select>
             <select
+              className="filters"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="all">Theme</option>
-              <option value="Video">Video</option>
-              <option value="PDF">PDF</option>
-              <option value="Audio">Audio</option>
-              <option value="Read">Read</option>
-              <option value="Other">Other</option>
+              <option value="all">{t("type")}</option>
+              <option value="Video">{t("video")}</option>
+
+              <option value="Audio">{t("audio")}</option>
+              <option value="Read">{t("read")}</option>
+              <option value="Other">{t("other")}</option>
             </select>
-            <select value={actor} onChange={(e) => setActor(e.target.value)}>
-              <option value="all">Actor</option>
-              <option value="Student">Student</option>
-              <option value="Parent">Parent</option>
-              <option value="Teacher">Teacher</option>
+            <select
+              className="filters"
+              value={actor}
+              onChange={(e) => setActor(e.target.value)}
+            >
+              <option value="all">{t("actor")}</option>
+              <option value="Student">{t("student")}</option>
+              <option value="Parent">{t("parent")}</option>
+              <option value="Teacher">{t("teacher")}</option>
             </select>
           </div>
-          {filteredStory.map((product, index) => (
-            <div key={index}>
-              <ProductCard product={product} />
-              <button
-                onClick={() => {
-                  navigate("/storyDetails", {
-                    state: {
-                      product: product,
-                    },
-                  });
-                }}
-              >
-                View Story
-              </button>
-            </div>
-          ))}
+          {filteredStory.length === 0 ? (
+            <p>No data available for the selected filters.</p>
+          ) : (
+            filteredStory.map((product, index) => (
+              <div key={index}>
+                <ProductCard product={product} />
+                {/* <Button
+                  className="viewButton"
+                  variant="solid"
+                  colorScheme="blue"
+                  onClick={() => {
+                    navigate("/storyDetails", {
+                      state: {
+                        product: product,
+                      },
+                    });
+                  }}
+                >
+                  View Story
+                </Button> */}
+              </div>
+            ))
+          )}
         </div>
       </div>
       <div>

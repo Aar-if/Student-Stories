@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./footer.module.css";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
-      <p>Developed by Tekdi Technologies | Powered by onest.network</p>
+      <p>{t("footerText")}</p>
     </footer>
   );
 }
