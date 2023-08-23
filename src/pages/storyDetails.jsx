@@ -36,7 +36,7 @@ function StoryDetatils() {
         {showIframe && (
           <div className="video-player">
             <SunbirdVideoPlayer
-              url={state?.product?.attributes?.link}
+             url={ state?.product?.attributes.PDF.data ? state.product.attributes.PDF.data[0].attributes.url : state?.product?.attributes?.link }
               width="90vh"
               height="50vh"
             />
