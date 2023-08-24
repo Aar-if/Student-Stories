@@ -44,10 +44,10 @@ function StoryDetatils() {
         )}
         <div className="detailsBox">
           <div>
-            <img
+            {<img
               src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
               style={{ width: "50px", height: "auto", marginRight: "50px" }}
-            />
+            /> }
           </div>
           <div>
             <b style={{ marginTop: "" }}>
