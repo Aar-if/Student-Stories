@@ -16,6 +16,7 @@ function Header() {
           <img
             src={imagePath}
             style={{ width: "60px", height: "auto", marginRight: "20px" }}
+            onClick={() => navigate("/")}
           />
         </div>
 
@@ -30,7 +31,7 @@ function Header() {
           <span>{t("welcome")}</span>
         </div>
         <div className={styles.menuDiv}>
-          <button onClick={() => navigate("/home")}>🏠</button>
+          <button onClick={() => navigate("/")}>🡸</button>
         </div>
         <div>
           <Select

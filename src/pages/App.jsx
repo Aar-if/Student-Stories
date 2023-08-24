@@ -11,8 +11,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Router>
           <Routes>
-            <Route path="/" element={<SplashScreen />} />
-            <Route path="/home" element={<Homepage />} />
+            <Route path="/" element={<Homepage />} />
             <Route path="/storyDetails" element={<StoryDetatils />} />
           </Routes>
         </Router>
