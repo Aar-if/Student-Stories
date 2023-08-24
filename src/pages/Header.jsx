@@ -31,7 +31,7 @@ function Header() {
           <span>{t("welcome")}</span>
         </div>
         <div className={styles.menuDiv}>
-          <button onClick={() => navigate("/")}>🡸</button>
+          <button onClick={() => navigate("/")}>🏠</button>
         </div>
         <div>
           <Select
