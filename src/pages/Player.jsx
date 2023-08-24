@@ -32,7 +32,7 @@ const SunbirdVideoPlayer = (props) => {
         width="100%"
         height="500vh"
         name={JSON.stringify(props)}
-        src={`http://onest-strapi.tekdinext.com` + url}
+        src={url}
       />
     );
   } else {
