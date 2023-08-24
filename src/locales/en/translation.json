@@ -1,7 +1,8 @@
 {
     "welcome": "Welcome to Kahani App!",
-    "footerText": "Developed by Tekdi Technologies | Powered by onest.network",
-    "age": "Age",
+    "footerText": "Developed by Tekdi Technologies",
+    "onestText": "Powered by onest.network",
+        "age": "Age",
     "language": "Language",
     "type": "Type",
     "actor": "Actor",
