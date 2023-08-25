@@ -70,7 +70,7 @@ const ProductCard = ({ product }) => {
               ) : (
                 <>
                    <span className="age-info1">
-  <Text  py="2">{product?.attributes?.Title}</Text>
+  <Text  py="2" className="age-info5">{product?.attributes?.Title}</Text>
  
 </span>
                   <span className="age-info">
@@ -88,7 +88,7 @@ const ProductCard = ({ product }) => {
   <Text py="2" className="age-info2">{product?.attributes?.Theme}</Text>
 </span>
 <span className="age-info">
-  <Text py="2">Pubished By:</Text>
+  <Text py="2">Published By:</Text>
   <Text py="2" className="age-info2">{product?.attributes?.Provider}</Text>
 </span>
 {/* <span className="age-info">
