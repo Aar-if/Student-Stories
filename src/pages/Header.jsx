@@ -26,6 +26,8 @@ function Header() {
             width: "60%",
             textAlign: "center",
             paddingRight: "10%",
+            fontFamily: "auto",
+            fontSize: "30px"
           }}
         >
           <span>{t("welcome")}</span>
@@ -33,9 +35,9 @@ function Header() {
         <div className={styles.menuDiv}>
           {/* <button onClick={() => navigate("/")}>🏠</button> */}
         </div>
-        <div>
+        <div style={{paddingRight: "8px"}}>
           <Select
-            style={{ marginRight: "2px" }}
+            style={{ marginRight: "22px" }}
             defaultValue={i18n.language}
             onChange={(event) => i18n.changeLanguage(event.target.value)}
           >
