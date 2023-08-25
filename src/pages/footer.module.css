@@ -8,3 +8,10 @@
   background-color: white;
   width: 100%;
 }
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  text-decoration: underline; 
+  color: blue; 
+}
