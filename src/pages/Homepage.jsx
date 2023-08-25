@@ -10,10 +10,16 @@ import { useTranslation } from "react-i18next";
 
 function App() {
   const [story, setStory] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [language, setLanguage] = useState("all");
-  const [ageGroup, setAgeGroup] = useState("all");
-  const [actor, setActor] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState(
+    localStorage.getItem("selectedCategory") || "all"
+  );
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "all"
+  );
+  const [ageGroup, setAgeGroup] = useState(
+    localStorage.getItem("ageGroup") || "all"
+  );
+  const [actor, setActor] = useState(localStorage.getItem("actor") || "all");
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -25,16 +31,46 @@ function App() {
     })
       .then(function (response) {
         const obj = JSON.parse(response.data);
-
         const parsedData = obj.data;
-
-        console.log(parsedData);
         setStory(parsedData);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+
+  useEffect(() => {
+    if (selectedCategory === "all") {
+      localStorage.removeItem("selectedCategory");
+    } else {
+      localStorage.setItem("selectedCategory", selectedCategory);
+    }
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (language === "all") {
+      localStorage.removeItem("language");
+    } else {
+      localStorage.setItem("language", language);
+    }
+  }, [language]);
+
+  useEffect(() => {
+    if (ageGroup === "all") {
+      localStorage.removeItem("ageGroup");
+    } else {
+      localStorage.setItem("ageGroup", ageGroup);
+    }
+  }, [ageGroup]);
+
+  useEffect(() => {
+    if (actor === "all") {
+      localStorage.removeItem("actor");
+    } else {
+      localStorage.setItem("actor", actor);
+    }
+  }, [actor]);
 
   // Filter the story array based on selectedCategory
   const filteredStory = story.filter((item) => {
@@ -47,9 +83,12 @@ function App() {
       ageGroup === "all" || item?.attributes?.Age == ageGroup;
     const actorFilter = actor === "all" || item?.attributes?.Actor === actor;
 
+
     return categoryFilter && languageFilter && ageGroupFilter && actorFilter;
   });
 
+ 
+// console.log("categoryFilter",categoryFilter)
   return (
     <div>
       <div>
@@ -76,17 +115,7 @@ function App() {
               <option value={3}>{t("3")}</option>
               <option value={4}>{t("4")}</option>
               <option value={5}>{t("5")}</option>
-              {/* <option value={6}>{t("6")}</option>
-              <option value={7}>{t("7")}</option>
-              <option value={8}>{t("8")}</option>
-              <option value={9}>{t("9")}</option>
-              <option value={10}>{t("10")}</option>
-              <option value={11}>{t("11")}</option>
-              <option value={12}>{t("12")}</option>
-              <option value={13}>{t("13")}</option>
-              <option value={14}>{t("14")}</option>
-              <option value={15}>{t("15")}</option>
-              <option value={16}>{t("16")}</option> */}
+    
             </select>
             <select
               className="filters"
