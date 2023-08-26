@@ -36,13 +36,15 @@ const SunbirdVideoPlayer = (props) => {
   if (url) {
     return (
       <iframe
-        id="preview"
-        width="100%"
-        height="500vh"
-        name={JSON.stringify(props)}
-        src={`${url}?autoplay=1`}
-      />
-    );
+      id="preview"
+      width="100%"
+      height="500vh"
+      name={JSON.stringify(props)}
+      src={`${url}?autoplay=1`}
+      allow="autoplay; fullscreen"
+  />
+  
+        );
   } else {
 //     useEffect(() => {
 // navigate("/");}, [
