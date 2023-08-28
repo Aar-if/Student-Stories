@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "./Card.module.css";
 import {
   Box,
   Card,
@@ -15,7 +16,6 @@ import {
   SkeletonText,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import "./Homepage.css";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -39,7 +39,6 @@ const ProductCard = ({ product }) => {
         </Box>
       ) : (
         <Card
-          className="cardDiv"
           onClick={() => {
             navigate("/storyDetails", {
               state: {
@@ -52,13 +51,15 @@ const ProductCard = ({ product }) => {
           variant="outline"
         >
           <Image
+            className={styles.imgDiv}
             objectFit="cover"
-            maxW={{ base: "50%", sm: "200px" }}
-            src={`https://onest-strapi.tekdinext.com`+product?.attributes?.image?.data?.attributes?.url}
-            alt="Caffe Latte"
+            maxW={{ base: "50%", sm: "230px" }}
+            // src="https://onest-strapi.tekdinext.com/uploads/images_e7f841a17f.png"
+            src={`https://onest-strapi.tekdinext.com`+ product?.attributes?.image?.data?.attributes?.url}
+            alt="img is not there"
           />
 
-          <Stack>
+<Stack>
             <CardBody>
               {isLoading ? (
                 <SkeletonText
