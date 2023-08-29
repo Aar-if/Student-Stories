@@ -26,17 +26,21 @@ function StoryDetatils() {
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-     <div className="player-header">
-  <h1>{state?.product?.attributes?.Title}</h1>
+   <div className="player-header">
+  <div className="title-wrapper">
+    <h1>{state?.product?.attributes?.Title}</h1>
+    <h1>{state?.product?.attributes?.Provider}</h1>
+  </div>
   <button
     className="player-button"
     onClick={() => {
-      navigate("/");
+      navigate("/home");
     }}
   >
     {showIframe ? "X" : "▶"}
   </button>
 </div>
+
 
         {showIframe && (
           <div className="video-player">
