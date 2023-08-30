@@ -12,7 +12,7 @@ pipeline {
     }
    stage('Checkout'){
             steps{
-                git branch: 'master' , url: 'git clone https://github.com/Aar-if/Student-Stories'   
+                git branch: 'main' , url: 'git clone https://github.com/Aar-if/Student-Stories'   
             }
         }
     
