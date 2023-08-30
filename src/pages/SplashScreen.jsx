@@ -24,7 +24,7 @@ const SplashScreen = () => {
           credentials?.password
         ); // Example: await fetch(apiUrl, options);
         if (response?.status === 200) {
-          navigate("/home");
+          navigate("/");
         }
         setLoading(false);
       } catch (error) {
