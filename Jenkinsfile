@@ -18,7 +18,7 @@ pipeline {
     
     stage('BuildingCode') {
       steps{
-      dir('/var/lib/jenkins/workspace/Storiesapp-student/Student-Stories'){
+      dir('/var/lib/jenkins/workspace/Storiesapp-student'){
         sh "rm -rf node_modules"
         sh "rm -rf package-lock.json"
         sh "ls"
@@ -30,7 +30,7 @@ pipeline {
     }
     stage('Deployment') {
       steps{
-      dir ('/var/lib/jenkins/workspace/Storiesapp-student/Student-Stories/dist/') { 
+      dir ('/var/lib/jenkins/workspace/Storiesapp-student/dist/') { 
          script {
                    
                     def awsCliCmd = 'aws'
@@ -41,9 +41,9 @@ pipeline {
                     //sh "aws configure set default.region ap-south-1"
        
                     def bucketName = 'onest-storiesapp'  
-                    sh "aws s3 cp /var/lib/jenkins/workspace/Storiesapp-student/Student-Stories/dist/index.html s3://${bucketName}/"
-                     sh "aws s3 cp /var/lib/jenkins/workspace/Storiesapp-student/Student-Stories/dist/vite.svg s3://${bucketName}/"
-                     sh "aws s3 cp /var/lib/jenkins/workspace/Storiesapp-student/Student-Stories/dist/assets/ s3://${bucketName}/assets/ --recursive"
+                    sh "aws s3 cp /var/lib/jenkins/workspace/Storiesapp-student/dist/index.html s3://${bucketName}/"
+                     sh "aws s3 cp /var/lib/jenkins/workspace/Storiesapp-student/dist/vite.svg s3://${bucketName}/"
+                     sh "aws s3 cp /var/lib/jenkins/workspace/Storiesapp-student/dist/assets/ s3://${bucketName}/assets/ --recursive"
         }
       }
     }
