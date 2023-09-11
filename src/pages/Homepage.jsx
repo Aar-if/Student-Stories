@@ -84,7 +84,7 @@ function App() {
   const parsedArray = JSON.parse(storedData);
 
   // Filter the story array based on selectedCategory
-  const filteredStory = parsedArray.filter((item) => {
+ const filteredStory = parsedArray?.filter((item) => {
     const categoryFilter =
       selectedCategory === "all" ||
       item?.attributes?.Theme === selectedCategory;
@@ -100,8 +100,8 @@ function App() {
   // Slice the filteredStory array based on pagination
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedStory = filteredStory.slice(startIndex, endIndex);
-  const pageCount = Math.ceil(filteredStory.length / itemsPerPage);
+  const paginatedStory = filteredStory?.slice(startIndex, endIndex);
+  const pageCount = Math.ceil(filteredStory?.length / itemsPerPage);
   const breakLabel = pageCount > 5 ? "..." : null;
   // Function to handle page change
   const handlePageClick = (selected) => {
@@ -183,10 +183,10 @@ function App() {
             </div>
           </div>
 
-          {paginatedStory.length === 0 ? (
+          {paginatedStory?.length === 0 ? (
             <p>No data available for the selected filters.</p>
           ) : (
-            paginatedStory.map((product, index) => (
+            paginatedStory?.map((product, index) => (
               <div key={index}>
                 <ProductCard product={product} />
               </div>
